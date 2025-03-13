@@ -1,0 +1,21 @@
+/* 03/03/2025
+Garcia Ortega Fernanda
+320301159 */
+%{
+#include <stdio.h>
+%}
+/* Programa que reconoce identificadores de C */
+espacio [ \t\n\r]
+dig [0-9]
+let [A-Za-z_]
+ident {let}({let}|{dig})*
+%%
+{ident} {printf("%s es un identificador\n", yytext);}
+{espacio} {/* Ignorar espacios en blanco */}
+. {printf("%s error no es un identificador\n", yytext);}
+
+%%
+int main(){
+	yylex();
+	return (0);
+}

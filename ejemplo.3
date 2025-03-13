@@ -1,0 +1,26 @@
+/* 03/03/2025
+Garcia Ortega Fernanda
+320301159 */
+%{
+#include <stdio.h>
+FILE *apSal;
+%}
+/* Programa que reconoce identificadores de C */
+espacio [ \t\n\r]
+dig [0-9]
+let [A-Za-z_]
+ident {let}({let}|{dig})*
+%%
+{ident} {fprintf(apSal,"%s es un identificador\n", yytext);}
+{espacio} {/* Ignorar espacios en blanco */}
+. {printf("%s error no es un identificador\n", yytext);}
+
+%%
+int main(int argc, char *argv[])
+{
+	yyin=fopen(argv[1],"r");
+	apSal=fopen("resultados.txt","w");
+	yylex();
+	fclose(apSal);
+	return (0);
+}
