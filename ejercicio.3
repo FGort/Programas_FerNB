@@ -1,0 +1,22 @@
+/* 03/03/2025
+Garcia Ortega Fernanda
+320301159 */
+
+%{
+#include <stdio.h>
+%}
+
+%%
+[0-9]{3}-[0-9]{3}-[0-9]{4}   { printf("Número telefónico válido: %s\n", yytext); }
+\([0-9]{3}\) [0-9]{3}-[0-9]{4} { printf("Número telefónico válido: %s\n", yytext); }
+.                             { /* Ignorar otros caracteres */ }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}

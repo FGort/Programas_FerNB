@@ -1,0 +1,20 @@
+/* 03/03/2025
+Garcia Ortega Fernanda
+320301159 */
+%{
+#include <stdio.h>
+%}
+
+%%
+[0-9]+\.[0-9]{0,5} { printf("Número real válido: %s\n", yytext); }
+.  { /* Ignorar otros caracteres */ }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}

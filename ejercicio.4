@@ -1,0 +1,25 @@
+/* 03/03/2025
+Garcia Ortega Fernanda
+320301159 */
+%{
+#include <stdio.h>
+%}
+
+%%
+"==" { printf("Operador relacional: %s\n", yytext); }
+"!=" { printf("Operador relacional: %s\n", yytext); }
+"<=" { printf("Operador relacional: %s\n", yytext); }
+">=" { printf("Operador relacional: %s\n", yytext); }
+"<"  { printf("Operador relacional: %s\n", yytext); }
+">"  { printf("Operador relacional: %s\n", yytext); }
+.    { /* Ignorar otros caracteres */ }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
